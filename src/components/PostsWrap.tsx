@@ -18,7 +18,7 @@ const PostsWrap = (): JSX.Element => {
   };
 
   useEffect(() => {
-    fetchRecommendations(activeLink, limit, user).then((data) => {
+    fetchRecommendations(activeLink, limit, user, '').then((data) => {
       setFetchedData(data);
     });
   }, [activeLink, limit]);

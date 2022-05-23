@@ -5,8 +5,16 @@ import useSupabaseAuth from '../hooks/useSupabaseAuth';
 import { version } from '../../package.json';
 import { capturePostHogAnayltics } from '../lib/analytics';
 
-const PrimaryNav = (): JSX.Element => {
+interface PostWrapProps{
+  setTextToSearch: any
+}
+
+const PrimaryNav = ({setTextToSearch}:PostWrapProps): JSX.Element => {
   const { signIn, signOut, user } = useSupabaseAuth();
+
+  const searchOnChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    setTextToSearch(e.currentTarget.value)
+  }
 
   return (
     <nav className="flex bg-offWhite min-h-10 w-full font-roboto font-bold px-4 py-4 sm:py-2">
@@ -18,8 +26,7 @@ const PrimaryNav = (): JSX.Element => {
             src={logo}
           />
         </a>
-        <input type="text" className='bg-gray-100 text-[14px] outline-none px-[8px] mr-[8px] rounded-md' placeholder='ex: twitter' />
-        <button className='bg-yellow-400 text-gray-700 font-medium text-[14px] px-[8px] rounded-md '>Find</button>
+        <input onChange={searchOnChangeHandler} type="text" className='bg-gray-200 text-[14px] outline-none px-[8px] mr-[8px] rounded-md' placeholder='ex: twitter' />
       </div>
       {!user && (
         <div className="items-center">

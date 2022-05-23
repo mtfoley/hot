@@ -18,6 +18,8 @@ const PrimaryNav = (): JSX.Element => {
             src={logo}
           />
         </a>
+        <input type="text" className='bg-gray-100 text-[14px] outline-none px-[8px] mr-[8px] rounded-md' placeholder='ex: twitter' />
+        <button className='bg-yellow-400 text-gray-700 font-medium text-[14px] px-[8px] rounded-md '>Find</button>
       </div>
       {!user && (
         <div className="items-center">
